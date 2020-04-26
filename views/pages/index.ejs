@@ -1,0 +1,54 @@
+<!-- views/pages/about.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head') %>
+</head>
+<body class="container">
+
+<header>
+    <%- include ('../partials/header') %>
+</header>
+
+<main>
+<div class="row">
+    <div class="col-sm-12">  
+        
+        <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">country</th>
+                <!-- <th scope="col">province</th> -->
+                <th scope="col">population</th>
+                <th scope="col">confirmed</th>
+                <th scope="col">deaths</th>
+                <th scope="col">recovered</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% data.locations.forEach(location =>{ %>
+                    <tr>
+                        <th> <%= location.country %> </th>
+                        <!-- <th> <%= location.province %> </th> -->
+                        <th> <%= location.country_population %> </th>
+                        <th> <%= location.latest.confirmed %> </th>
+                        <th> <%= location.latest.deaths %> </th>
+                        <th> <%= location.latest.recovered %> </th>
+                    </tr>
+                    
+                <% }); %>
+            </tbody>
+          </table>
+         
+    </div>
+
+</div>
+</main>
+
+<footer>
+    <%- include ('../partials/footer') %>
+</footer>
+
+</body>
+</html>
