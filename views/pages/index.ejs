@@ -12,38 +12,39 @@
 </header>
 
 <main>
-<div class="row">
-    <div class="col-sm-12">  
-        
-        <table class="table table-striped table-dark">
-            <thead>
-              <tr>
-                <th scope="col">country</th>
-                <!-- <th scope="col">province</th> -->
-                <th scope="col">population</th>
-                <th scope="col">confirmed</th>
-                <th scope="col">deaths</th>
-                <th scope="col">recovered</th>
-              </tr>
-            </thead>
-            <tbody>
-                <% data.locations.forEach(location =>{ %>
-                    <tr>
-                        <th> <%= location.country %> </th>
-                        <!-- <th> <%= location.province %> </th> -->
-                        <th> <%= location.country_population %> </th>
-                        <th> <%= location.latest.confirmed %> </th>
-                        <th> <%= location.latest.deaths %> </th>
-                        <th> <%= location.latest.recovered %> </th>
-                    </tr>
-                    
-                <% }); %>
-            </tbody>
-          </table>
-         
-    </div>
 
-</div>
+    <table class="table table-bordered table-striped table-responsive-stack"  id="tableOne">
+
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">country</th>
+            <th scope="col">province</th>
+            <th scope="col">population</th>
+            <th scope="col">confirmed</th>
+            <th scope="col">deaths</th>
+            <th scope="col">recovered</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <% data.locations.forEach(location =>{ %>
+                <tr>
+                    <td> <%= location.country %> </td>
+                    <% if (location.province == "") { %>
+                        <td> - </td>
+                    <% } else { %>
+                        <td> <%= location.province %> </td>
+                    <% } %>
+                    <td> <%= location.country_population %> </td>
+                    <td> <%= location.latest.confirmed %> </td>
+                    <td> <%= location.latest.deaths %> </td>
+                    <td> <%= location.latest.recovered %> </td>
+                </tr>         
+            <% }); %>
+        </tbody>
+
+      </table>
+    
 </main>
 
 <footer>
@@ -51,4 +52,5 @@
 </footer>
 
 </body>
+<%- include ('../partials/scripts') %>
 </html>
